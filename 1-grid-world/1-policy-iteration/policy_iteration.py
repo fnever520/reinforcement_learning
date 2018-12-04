@@ -8,6 +8,7 @@ class PolicyIteration:
         self.env = env
         # 2-d list for the value function
         self.value_table = [[0.0] * env.width for _ in range(env.height)]
+        print("asdf", self.value_table)
         # list of random policy (same probability of up, down, left, right)
         self.policy_table = [[[0.25, 0.25, 0.25, 0.25]] * env.width
                                     for _ in range(env.height)]
@@ -35,6 +36,7 @@ class PolicyIteration:
                           (reward + self.discount_factor * next_value))
 
             next_value_table[state[0]][state[1]] = round(value, 2)
+            print (next_value_table)
 
         self.value_table = next_value_table
 
@@ -54,6 +56,7 @@ class PolicyIteration:
                 reward = self.env.get_reward(state, action)
                 next_value = self.get_value(next_state)
                 temp = reward + self.discount_factor * next_value
+                print('temp', temp)
 
                 # We normally can't pick multiple actions in greedy policy.
                 # but here we allow multiple actions with same max values
@@ -66,11 +69,14 @@ class PolicyIteration:
 
             # probability of action
             prob = 1 / len(max_index)
+            print('maxindex', max_index)
+            print('prob', prob)
 
             for index in max_index:
                 result[index] = prob
 
             next_policy[state[0]][state[1]] = result
+            print('next_policy', next_policy)
 
         self.policy_table = next_policy
 

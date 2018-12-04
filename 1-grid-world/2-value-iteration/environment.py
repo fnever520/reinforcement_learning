@@ -32,6 +32,7 @@ class GraphicDisplay(tk.Tk):
         self.text_reward(2, 2, "R : 1.0")
         self.text_reward(1, 2, "R : -1.0")
         self.text_reward(2, 1, "R : -1.0")
+        #self.text_reward(2, 3, "R : -1.0")
 
     def _build_canvas(self):
         canvas = tk.Canvas(self, bg='white',
@@ -74,6 +75,8 @@ class GraphicDisplay(tk.Tk):
         canvas.create_image(250, 150, image=self.shapes[1])
         canvas.create_image(150, 250, image=self.shapes[1])
         canvas.create_image(250, 250, image=self.shapes[2])
+        #todo
+        #canvas.create_image(350, 250, image=self.shapes[1])
 
         # pack all
         canvas.pack()
@@ -231,6 +234,8 @@ class Env:
         self.reward[2][2] = 1  # reward 1 for circle
         self.reward[1][2] = -1  # reward -1 for triangle
         self.reward[2][1] = -1  # reward -1 for triangle
+        #todo
+        #self.reward[2][3] = -1 # reward -1 for triangle
         self.all_state = []
 
         for x in range(WIDTH):

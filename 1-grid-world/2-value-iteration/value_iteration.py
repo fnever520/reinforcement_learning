@@ -23,8 +23,10 @@ class ValueIteration:
                 reward = self.env.get_reward(state, action)
                 next_value = self.get_value(next_state)
                 value_list.append((reward + self.discount_factor * next_value))
+                #print(value_list)
             # return the maximum value(it is the optimality equation!!)
             next_value_table[state[0]][state[1]] = round(max(value_list), 2)
+            #print('...', next_value_table)
         self.value_table = next_value_table
 
     # get action according to the current value function table
@@ -43,6 +45,7 @@ class ValueIteration:
             reward = self.env.get_reward(state, action)
             next_value = self.get_value(next_state)
             value = (reward + self.discount_factor * next_value)
+
 
             if value > max_value:
                 action_list.clear()
