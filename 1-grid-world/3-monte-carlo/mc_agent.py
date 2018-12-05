@@ -29,6 +29,7 @@ class MCAgent:
             if state not in visit_state:
                 visit_state.append(state)
                 G_t = self.discount_factor * (reward[1] + G_t)
+                print("G_t", G_t)
                 value = self.value_table[state]
                 self.value_table[state] = (value +
                                            self.learning_rate * (G_t - value))
@@ -43,6 +44,7 @@ class MCAgent:
             # take action according to the q function table
             next_state = self.possible_next_state(state)
             action = self.arg_max(next_state)
+            print("current action : ", action)
         return int(action)
 
     # compute arg_max if multiple candidates exit, pick one randomly
