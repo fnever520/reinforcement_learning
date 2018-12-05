@@ -27,16 +27,21 @@ class PolicyIteration:
             if state == [2, 2]:
                 next_value_table[state[0]][state[1]] = value
                 continue
-
+            i = 0
             for action in self.env.possible_actions:
                 next_state = self.env.state_after_action(state, action)
                 reward = self.env.get_reward(state, action)
                 next_value = self.get_value(next_state)
+                print("i", i)
+                print("next_value", next_value)
+                print("policy", self.get_policy(state)[action])
                 value += (self.get_policy(state)[action] *
                           (reward + self.discount_factor * next_value))
+                print("value", value)
+                i+=1
 
             next_value_table[state[0]][state[1]] = round(value, 2)
-            print (next_value_table)
+            #print (next_value_table)
 
         self.value_table = next_value_table
 
@@ -56,8 +61,7 @@ class PolicyIteration:
                 reward = self.env.get_reward(state, action)
                 next_value = self.get_value(next_state)
                 temp = reward + self.discount_factor * next_value
-                print('temp', temp)
-
+            
                 # We normally can't pick multiple actions in greedy policy.
                 # but here we allow multiple actions with same max values
                 if temp == value:
@@ -69,8 +73,8 @@ class PolicyIteration:
 
             # probability of action
             prob = 1 / len(max_index)
-            print('maxindex', max_index)
-            print('prob', prob)
+            #print('maxindex', max_index)
+            #print('prob', prob)
 
             for index in max_index:
                 result[index] = prob

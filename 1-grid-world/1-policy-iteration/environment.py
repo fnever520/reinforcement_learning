@@ -240,11 +240,8 @@ class Env:
     def check_boundary(state):
         state[0] = (0 if state[0] < 0 else WIDTH - 1
                     if state[0] > WIDTH - 1 else state[0])
-        # print('state 0: ',state[0])
         state[1] = (0 if state[1] < 0 else HEIGHT - 1
                     if state[1] > HEIGHT - 1 else state[1])
-        # print('state 1:', state[1])
-        print('...' ,state)
         return state
 
     def get_transition_prob(self, state, action):
