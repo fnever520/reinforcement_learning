@@ -22,7 +22,7 @@ class GraphicDisplay(tk.Tk):
         self.texts = []
         self.arrows = []
         self.env = Env()
-        self.agent = value_iterations
+        self.agent = value_iteration
         self.iteration_count = 0
         self.improvement_count = 0
         self.is_moving = 0

@@ -8,7 +8,7 @@ class PolicyIteration:
         self.env = env
         # 2-d list for the value function
         self.value_table = [[0.0] * env.width for _ in range(env.height)]
-        print("asdf", self.value_table)
+
         # list of random policy (same probability of up, down, left, right)
         self.policy_table = [[[0.25, 0.25, 0.25, 0.25]] * env.width
                                     for _ in range(env.height)]
