@@ -31,8 +31,10 @@ class MCAgent:
                 G_t = self.discount_factor * (reward[1] + G_t)
                 print("G_t", G_t)
                 value = self.value_table[state]
+                print("value", value)
                 self.value_table[state] = (value +
                                            self.learning_rate * (G_t - value))
+                print('value_table', self.value_table)
 
     # get action for the state according to the q function table
     # agent pick action of epsilon-greedy policy
@@ -44,7 +46,7 @@ class MCAgent:
             # take action according to the q function table
             next_state = self.possible_next_state(state)
             action = self.arg_max(next_state)
-            print("current action : ", action)
+            #print("current action : ", action)
         return int(action)
 
     # compute arg_max if multiple candidates exit, pick one randomly
