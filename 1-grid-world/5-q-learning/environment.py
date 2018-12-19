@@ -135,9 +135,12 @@ class Env(tk.Tk):
             reward = 100
             done = True
         elif next_state in [self.canvas.coords(self.triangle1),
-                            self.canvas.coords(self.triangle2),
-                            self.canvas.coords(self.triangle3)]:
+                            self.canvas.coords(self.triangle2)]:
             reward = -100
+            done = True
+        # additional triangle with -1 reward is added as per question
+        elif next_state in [self.canvas.coords(self.triangle3)]:
+            reward = -1
             done = True
         else:
             reward = 0

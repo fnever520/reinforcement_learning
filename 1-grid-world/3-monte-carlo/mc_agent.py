@@ -29,12 +29,13 @@ class MCAgent:
             if state not in visit_state:
                 visit_state.append(state)
                 G_t = self.discount_factor * (reward[1] + G_t)
-                print("G_t", G_t)
+                print("===================")
+                print("| G_t\t:", G_t)
                 value = self.value_table[state]
-                print("value", value)
+                print("|value\t:", value)
                 self.value_table[state] = (value +
                                            self.learning_rate * (G_t - value))
-                print('value_table', self.value_table)
+                #print('|value_table', self.value_table)
 
     # get action for the state according to the q function table
     # agent pick action of epsilon-greedy policy
@@ -109,6 +110,7 @@ if __name__ == "__main__":
 
             # at the end of each episode, update the q function table
             if done:
+                print("\n--------------------")
                 print("episode : ", episode)
                 agent.update()
                 agent.samples.clear()

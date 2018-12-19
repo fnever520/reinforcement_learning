@@ -128,9 +128,12 @@ class Env(tk.Tk):
             reward = 100
             done = True
         elif next_state in [self.canvas.coords(self.triangle1),
-                            self.canvas.coords(self.triangle2),
-                            self.canvas.coords(self.triangle3)]:
+                            self.canvas.coords(self.triangle2)]:
             reward = -100
+            done = True
+        # added a -1 reward for the third triangle
+        elif next_state in [self.canvas.coords(self.triangle3)]:
+            reward = -1
             done = True
         else:
             reward = 0
@@ -141,5 +144,5 @@ class Env(tk.Tk):
         return next_state, reward, done
 
     def render(self):
-        time.sleep(0.03)
+        time.sleep(0.05)
         self.update()
