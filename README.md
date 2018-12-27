@@ -53,3 +53,5 @@ pip install -r requirements.txt
 **OpenAI GYM** - [WIP]
 
 - Mountain Car - [DQN](./4-gym/1-mountaincar)
+
+![alt-text](https://github.com/fnever520/reinforcement_learning/blob/f86c8d59068d0e7a08cd8e579d83ef477863f8e2/Screen%20Recording%202018-12-27%20at%202.28.33%20PM.gif)
